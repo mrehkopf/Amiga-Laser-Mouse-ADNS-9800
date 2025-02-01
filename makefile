@@ -53,7 +53,8 @@ CRT = --use-crt=crt0i.o
 COPT  = -p$(PROC) -m$(FAMILY) --use-non-free $(CRT)
 COPTD = --opt-code-size --optimize-df --obanksel=2
 #-----------------------------------------------------------------------------
-CFLAGS = $(COPT) $(COPTD)
+DEFINES = -DPINSWAP #-DDEMO_MODE
+CFLAGS = $(COPT) $(COPTD) $(DEFINES)
 LDFLAGS = -Wl,-O2,--map
 #-----------------------------------------------------------------------------
 all: $(HEXFILE)
