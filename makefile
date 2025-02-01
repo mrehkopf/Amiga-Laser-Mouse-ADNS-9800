@@ -69,7 +69,7 @@ $(HEXFILE): $(OBJS) mouse.c $(PATHSRC)/*.h
 	@echo "Fusebits set:"
 	@echo "300000h CONFIG1L 00 - not configurable"
 	@echo "300001h CONFIG1H 29 PRICLKEN, FOSC=1001 - Internal RC oscillator, CLKOUT function on OSC2"
-	@echo "300002h CONFIG2L 07 BOREN=11 - Brown-out Reset enabled in hardware only, BORV=00 - VBOR set to 2.85V"
+	@echo "300002h CONFIG2L 06 BOREN=11 - Brown-out Reset enabled in hardware only, BORV=00 - VBOR set to 2.85V"
 	@echo "300003h CONFIG2H 3c WDTEN=OFF"
 	@echo "300004h CONFIG3L 00 - not configurable"
 	@echo "300005h CONFIG3H BF default"
@@ -81,7 +81,7 @@ $(HEXFILE): $(OBJS) mouse.c $(PATHSRC)/*.h
 	@echo "30000Bh CONFIG6H E0 default"
 	@echo "30000Ch CONFIG7L 03 memory not protected"
 	@echo "30000Dh CONFIG7H 40 default"
-	@sed -i 's/:010006008574/:0E0000000029073C00BF850003C003E0034059/g' $(HEXFILE)
+	@sed -i 's/:010006008574/:0E0000000029063C00BF850003C003E003405A/g' $(HEXFILE)
 	@$(BINEX) /V $(HEXFILE) 2>/dev/null |tail -n 4
 
 %.o: $(PATHSRC)/%.c $(PATHSRC)/*.h
