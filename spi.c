@@ -81,6 +81,7 @@ void SPI_init(void)
     MOSI_PORT_DIRECTION = OUTPUT;
     SCLK_PORT_DIRECTION = OUTPUT;
     NCS = HIGH;
+    SCLK = HIGH;
 }
 
 //=============================================================================
