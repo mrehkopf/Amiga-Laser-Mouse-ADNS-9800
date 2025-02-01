@@ -79,6 +79,7 @@ void ADNS_upload_firmware(void)
     ADNS_write_reg(REG_SROM_Enable, 0x1d);
     DELAY_MS(10);
     ADNS_write_reg(REG_SROM_Enable, 0x18);
+    delay_us(100);
 
     // Transferring the firmware to ADNS
     ADNS_com_begin();
@@ -87,8 +88,9 @@ void ADNS_upload_firmware(void)
     for (uint16_t u16Idx = 0; u16Idx < ADNS_FIRMWARE_LENGTH; u16Idx++)
     {
         (void)SPI_transfer(ADNS_firmware_data[u16Idx]);
+        delay_us(15);
     }
-    delay_us(2); // 10us delay before exiting burst mode
+    delay_us(10); // 10us delay before exiting burst mode
     ADNS_com_end();
     delay_us(200); // Datasheet says wait 160ms for ADNS to exit the burst mode before starting new communication. Waiting 40us more as 160ms was too short.
 }
